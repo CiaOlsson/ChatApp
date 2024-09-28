@@ -1,1 +1,5 @@
+# Ignorera appsettings-filer
 appsettings.*
+
+# Ignorera .vs-mappen
+.vs/
