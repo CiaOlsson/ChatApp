@@ -3,3 +3,18 @@ appsettings.*
 
 # Ignorera .vs-mappen
 .vs/
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore user-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore Visual Studio specific files
+.vs/
+*.dbmdl
+*.dbproj
