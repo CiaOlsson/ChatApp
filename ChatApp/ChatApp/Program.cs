@@ -1,11 +1,16 @@
 using ChatApp.Client.Pages;
 using ChatApp.Components;
+using ChatApp.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
 	.AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddDbContext<ChatAppDbContext>(options => 
+	options.UseSqlite(builder.Configuration.GetConnectionString("ChatDbConnection")));
 
 var app = builder.Build();
 
