@@ -1,6 +1,7 @@
 using ChatApp.Client.Pages;
 using ChatApp.Components;
 using ChatApp.Data.Context;
+using ChatApp.Hubs;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
 	.AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddSignalR();
 
 builder.Services.AddDbContext<ChatAppDbContext>(options => 
 	options.UseSqlite(builder.Configuration.GetConnectionString("ChatDbConnection")));
@@ -26,11 +29,13 @@ else
 	app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
-
+app.MapHub<ChatHub>("/chathub");
 app.MapRazorComponents<App>()
 	.AddInteractiveWebAssemblyRenderMode()
 	.AddAdditionalAssemblies(typeof(ChatApp.Client._Imports).Assembly);

@@ -1,0 +1,24 @@
+﻿@page "/chat"
+@rendermode InteractiveWebAssembly
+@inject NavigationManager NavigationManager
+
+<PageTitle>Le Chat</PageTitle>
+
+
+<h1>Le Chat</h1>
+
+@* Här ska jag lägga HTML, det ska vara en ruta som visar chatmeddelanden 
+ + inmatnings ruta + knapp
+*@
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+
